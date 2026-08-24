@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>@ViewBag.SiteTitle</h1>
+
+@if ((bool)ViewBag.EnableGreetingFeature)
+{
+    <div class="text-center">
+        <form asp-controller="Home" asp-action="Greet" method="post">
+            <input type="text" name="name" placeholder="Enter your name" class="form-control w-25 mx-auto mb-2" />
+            <button type="submit" class="btn btn-primary">Greet Me</button>
+        </form>
+
+        @if (ViewBag.Message != null)
+        {
+            <h3 class="mt-4">@ViewBag.Message</h3>
+        }
+    </div>
+}
+else
+{
+    <p class="text-center">Greeting feature is currently disabled.</p>
+}
